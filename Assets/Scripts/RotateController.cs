@@ -30,12 +30,12 @@ public class RotateController : MonoBehaviour
     {
         _isDowned = context.ReadValue<float>() == 1;
         if (_isDowned)
-            _prevPosX = _camera.ScreenToViewportPoint(Mouse.current.position.ReadValue()).x;
+            _prevPosX = _camera.ScreenToViewportPoint(Pointer.current.position.ReadValue()).x;
     }
 
     private void Rotate()
     {
-        var newPosX = _camera.ScreenToViewportPoint(Mouse.current.position.ReadValue()).x;
+        var newPosX = _camera.ScreenToViewportPoint(Pointer.current.position.ReadValue()).x;
         var rotationAng = (newPosX - _prevPosX) * rotationSpeed;
         _prevPosX = newPosX;
         unityChan.Rotate(Vector3.up, rotationAng);
